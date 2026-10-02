@@ -1,0 +1,150 @@
+{
+  "caseId": "cp-live-sandbox-001",
+  "notice": "Minimized fields from actual saved PayPal sandbox responses. Original payer details, links, merchant identifiers and credentials excluded. Fictitious funds only.",
+  "timeline": [
+    {
+      "sequence": 3,
+      "recordHash": "0ac489772e34c66dcfe8f43c896418a937cf7c58679a8485592a1ebd22769233",
+      "recordedAt": "2026-10-02T04:40:14.703Z",
+      "source": "paypal-sandbox",
+      "httpStatus": 201,
+      "fetchedAt": "2026-10-02T04:40:14.701Z",
+      "orderId": "63W11482XV2348118",
+      "status": "CREATED",
+      "intent": "CAPTURE",
+      "purchaseUnits": [
+        {
+          "invoiceId": "CP-SBX-20261002-001",
+          "amount": {
+            "currency_code": "USD",
+            "value": "49.00"
+          }
+        }
+      ]
+    },
+    {
+      "sequence": 4,
+      "recordHash": "20a8aa787a5afab71222a98a76b213d73118efc952e43306a20428ad56ef2371",
+      "recordedAt": "2026-10-02T04:40:15.370Z",
+      "source": "paypal-sandbox",
+      "httpStatus": 200,
+      "fetchedAt": "2026-10-02T04:40:15.368Z",
+      "orderId": "63W11482XV2348118",
+      "status": "CREATED",
+      "intent": "CAPTURE",
+      "purchaseUnits": [
+        {
+          "invoiceId": "CP-SBX-20261002-001",
+          "amount": {
+            "currency_code": "USD",
+            "value": "49.00"
+          }
+        }
+      ]
+    },
+    {
+      "sequence": 5,
+      "recordHash": "2813274105a3796be099b49fb9b2d75e4646aabca42f675df2fe39720310cbcb",
+      "recordedAt": "2026-10-02T04:42:09.701Z",
+      "source": "paypal-sandbox",
+      "httpStatus": 200,
+      "fetchedAt": "2026-10-02T04:42:09.698Z",
+      "orderId": "63W11482XV2348118",
+      "status": "APPROVED",
+      "intent": "CAPTURE",
+      "purchaseUnits": [
+        {
+          "invoiceId": "CP-SBX-20261002-001",
+          "amount": {
+            "currency_code": "USD",
+            "value": "49.00"
+          }
+        }
+      ]
+    },
+    {
+      "sequence": 6,
+      "recordHash": "6ca68000560a50e057b5b0c87f9fabe45afaff6b7f1f17732ef84cd799505bcc",
+      "recordedAt": "2026-10-02T04:45:17.552Z",
+      "source": "paypal-sandbox",
+      "httpStatus": 200,
+      "fetchedAt": "2026-10-02T04:45:17.549Z",
+      "orderId": "63W11482XV2348118",
+      "status": "APPROVED",
+      "intent": "CAPTURE",
+      "purchaseUnits": [
+        {
+          "invoiceId": "CP-SBX-20261002-001",
+          "amount": {
+            "currency_code": "USD",
+            "value": "49.00"
+          }
+        }
+      ]
+    },
+    {
+      "sequence": 8,
+      "recordHash": "1ba1cd330f3c27d1f12cfde0b6a4acd20ee0ad7d0e0ad096977972f6e6ad87c5",
+      "recordedAt": "2026-10-02T04:45:19.590Z",
+      "source": "paypal-sandbox",
+      "httpStatus": 201,
+      "fetchedAt": "2026-10-02T04:45:19.587Z",
+      "orderId": "63W11482XV2348118",
+      "status": "COMPLETED",
+      "intent": "CAPTURE",
+      "purchaseUnits": [
+        {
+          "invoiceId": "CP-SBX-20261002-001",
+          "amount": {
+            "currency_code": "USD",
+            "value": "49.00"
+          },
+          "captures": [
+            {
+              "id": "4D1364913R338640H",
+              "status": "COMPLETED",
+              "amount": {
+                "currency_code": "USD",
+                "value": "49.00"
+              },
+              "create_time": "2026-10-02T04:45:18Z",
+              "update_time": "2026-10-02T04:45:18Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sequence": 9,
+      "recordHash": "f05fe55d46ae855968a3e5808c4ed3f1d29447fab145b4f70acfc9983e5e4943",
+      "recordedAt": "2026-10-02T04:45:20.694Z",
+      "source": "paypal-sandbox",
+      "httpStatus": 200,
+      "fetchedAt": "2026-10-02T04:45:20.692Z",
+      "orderId": "63W11482XV2348118",
+      "status": "COMPLETED",
+      "intent": "CAPTURE",
+      "purchaseUnits": [
+        {
+          "invoiceId": "CP-SBX-20261002-001",
+          "amount": {
+            "currency_code": "USD",
+            "value": "49.00"
+          },
+          "captures": [
+            {
+              "id": "4D1364913R338640H",
+              "status": "COMPLETED",
+              "amount": {
+                "currency_code": "USD",
+                "value": "49.00"
+              },
+              "create_time": "2026-10-02T04:45:18Z",
+              "update_time": "2026-10-02T04:45:18Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

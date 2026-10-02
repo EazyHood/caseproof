@@ -1,0 +1,178 @@
+{
+  "schemaVersion": "1.0",
+  "exportedAt": "2026-10-02T04:50:33.230Z",
+  "caseId": "cp-live-sandbox-002",
+  "operation": "export",
+  "disposition": "stored-evidence",
+  "orderId": "95540662N9576413K",
+  "requestId": null,
+  "result": {
+    "schemaVersion": "1.0",
+    "orderId": "95540662N9576413K",
+    "invoiceId": "CP-SBX-20261002-002",
+    "observedAt": "2026-10-02T04:50:33.231Z",
+    "mode": "sandbox",
+    "state": "paid",
+    "allowedActions": [
+      "record_payment"
+    ],
+    "issues": [],
+    "evidence": [
+      {
+        "id": "expected",
+        "kind": "merchant-record",
+        "label": "Expected invoice",
+        "facts": {
+          "invoiceId": "CP-SBX-20261002-002",
+          "value": "49.00",
+          "currencyCode": "USD",
+          "orderId": "95540662N9576413K",
+          "minor": "4900"
+        }
+      },
+      {
+        "id": "order:95540662N9576413K",
+        "kind": "order",
+        "label": "Order snapshot",
+        "facts": {
+          "id": "95540662N9576413K",
+          "status": "COMPLETED",
+          "intent": "CAPTURE",
+          "fetchedAt": "2026-10-02T04:50:33.131Z",
+          "source": "paypal-sandbox"
+        }
+      },
+      {
+        "id": "capture:2UP821765V0648713",
+        "kind": "capture",
+        "label": "Capture in order snapshot",
+        "facts": {
+          "id": "2UP821765V0648713",
+          "status": "COMPLETED",
+          "amount": {
+            "currency_code": "USD",
+            "value": "49.00"
+          }
+        }
+      },
+      {
+        "id": "event:WH-3JF99413UD730984M-3WE900643R479401V",
+        "kind": "webhook",
+        "label": "Signature-verified event",
+        "facts": {
+          "id": "WH-3JF99413UD730984M-3WE900643R479401V",
+          "type": "PAYMENT.CAPTURE.COMPLETED",
+          "createdAt": "2026-10-02T04:48:59.575Z",
+          "source": "paypal-sandbox",
+          "resourceId": "2UP821765V0648713"
+        }
+      }
+    ],
+    "duplicateEvents": 0,
+    "amounts": {
+      "currencyCode": "USD",
+      "expectedMinor": "4900",
+      "completedMinor": "4900",
+      "differenceMinor": "0",
+      "expected": "49.00",
+      "completed": "49.00",
+      "difference": "0.00",
+      "scope": "Current COMPLETED captures only; excludes fees and refunds; not a bank-settlement balance."
+    },
+    "execution": "proposal-only"
+  },
+  "approvalLinkAvailable": false,
+  "provenance": {
+    "kind": "paypal-sandbox",
+    "configuredSource": "paypal-sandbox",
+    "notice": "Stored PayPal sandbox evidence. Fictitious funds only; this is not a bank-settlement confirmation."
+  },
+  "receipt": {
+    "recordCount": 11,
+    "latestRecordHash": "c4e1edb3de0be2d05c3dde8d6211929ec7d2baa43d51a5ae06acaae4923bb40b",
+    "latestObservedAt": "2026-10-02T04:50:33.131Z"
+  },
+  "records": [
+    {
+      "sequence": 1,
+      "type": "case_created",
+      "recordedAt": "2026-10-02T04:48:06.617Z",
+      "hash": "9c6176c7bdefee2e6962dee301a7d99032970067b9e5e8a41d212a860b9fb25e"
+    },
+    {
+      "sequence": 2,
+      "type": "request_reserved",
+      "recordedAt": "2026-10-02T04:48:06.633Z",
+      "hash": "692a3dc3a007cd9b6a080fd90827f87bc3b9272f3dda5e90a618719f76ac8c18"
+    },
+    {
+      "sequence": 3,
+      "type": "snapshot_saved",
+      "recordedAt": "2026-10-02T04:48:08.949Z",
+      "hash": "37275fb48e8f9d4af739880914ebdd3e59bd86667823daa27c08c821e768e0b1"
+    },
+    {
+      "sequence": 4,
+      "type": "snapshot_saved",
+      "recordedAt": "2026-10-02T04:48:10.086Z",
+      "hash": "17ac0e1d8bab4fc581016bc3119c7f991137b34a079c18002c63db73ac5597fc"
+    },
+    {
+      "sequence": 5,
+      "type": "snapshot_saved",
+      "recordedAt": "2026-10-02T04:48:49.625Z",
+      "hash": "7973ba6442487f66f7f021c85605b0cb523772a1cef0e7730220ea32f7923dd7"
+    },
+    {
+      "sequence": 6,
+      "type": "snapshot_saved",
+      "recordedAt": "2026-10-02T04:48:54.044Z",
+      "hash": "597366991127fb10b57cfe0da3f07c54a39c3a3eb3ba27c872129030be20ebd7"
+    },
+    {
+      "sequence": 7,
+      "type": "request_reserved",
+      "recordedAt": "2026-10-02T04:48:54.050Z",
+      "hash": "f4b56df4b592e49286dd6e644853f49454fe388c0cbf1ed0530836a0e48fa024"
+    },
+    {
+      "sequence": 8,
+      "type": "snapshot_saved",
+      "recordedAt": "2026-10-02T04:48:55.854Z",
+      "hash": "40bcc12fae81af542966229cb914be2960a8987a4078976368c582905c4e287e"
+    },
+    {
+      "sequence": 9,
+      "type": "snapshot_saved",
+      "recordedAt": "2026-10-02T04:48:57.056Z",
+      "hash": "03e4c047973898a8f08aff5936c8e3e274da4078b34068169e34d905ab34ec65"
+    },
+    {
+      "sequence": 10,
+      "type": "webhook_saved",
+      "recordedAt": "2026-10-02T04:49:13.379Z",
+      "hash": "7a60c66eed59da03ba007ac03336e8bfe02a6f8eb0db8eb679cd98f0692edb07"
+    },
+    {
+      "sequence": 11,
+      "type": "snapshot_saved",
+      "recordedAt": "2026-10-02T04:50:33.135Z",
+      "hash": "c4e1edb3de0be2d05c3dde8d6211929ec7d2baa43d51a5ae06acaae4923bb40b"
+    }
+  ],
+  "requests": [
+    {
+      "operation": "create_order",
+      "requestId": "1a71ed6c-9e5f-410c-b714-86fe3b7c5101",
+      "payloadHash": "f00706171163c48eb0dcda396d6705d5f952bf0e4972ca21246be95e598965bf",
+      "recordedAt": "2026-10-02T04:48:06.633Z"
+    },
+    {
+      "operation": "capture_order",
+      "requestId": "69a00023-9f8c-4931-95ae-2bfa70f8bb16",
+      "payloadHash": "9ceee047f9e288929ec6b9af21645eb7f910a7695d8c45c49a00b9f73d109750",
+      "recordedAt": "2026-10-02T04:48:54.050Z"
+    }
+  ],
+  "privacyNotice": "This minimized export excludes raw PayPal responses, payer details, approval links and authentication material. Private store records contain original provider JSON."
+}

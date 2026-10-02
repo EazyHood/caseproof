@@ -1,0 +1,16 @@
+{
+  "name": "caseproof",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "PayPal sandbox payment reconciliation with evidence-constrained AI proposals",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test",
+    "demo": "node src/demo.js",
+    "build:static": "node scripts/build-static.mjs",
+    "sandbox:inspect": "node src/inspect-sandbox.js"
+  },
+  "license": "MIT"
+}

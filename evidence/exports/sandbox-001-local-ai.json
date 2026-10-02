@@ -1,0 +1,98 @@
+{
+  "recordedAt": "2026-10-02T04:49:38.659Z",
+  "mode": "recorded-real-sandbox-and-local-model",
+  "notice": "Recorded response from PayPal sandbox and local Ollama model. Fictitious funds. Not a new live query or an accuracy claim.",
+  "response": {
+    "proposal": {
+      "action": "record_payment",
+      "claimedCompletedMinor": "4900",
+      "claimedState": "paid",
+      "currencyCode": "USD",
+      "evidenceIds": [
+        "expected",
+        "order:63W11482XV2348118",
+        "capture:4D1364913R338640H"
+      ],
+      "explanation": "The invoice is already marked as paid with a completed capture of 49.00 USD. The order status is COMPLETED with a capture that has been successfully completed. Recording the payment is consistent with the current state and evidence.",
+      "reasonCodes": [
+        "state:paid"
+      ]
+    },
+    "validation": {
+      "accepted": true,
+      "errors": [],
+      "execution": "none",
+      "structuredAssertionsVerified": true,
+      "explanationVerified": false,
+      "explanationNotice": "AI draft prose is not semantically verified. The state, amount, action and citation IDs are checked separately."
+    },
+    "result": {
+      "schemaVersion": "1.0",
+      "orderId": "63W11482XV2348118",
+      "invoiceId": "CP-SBX-20261002-001",
+      "observedAt": "2026-10-02T04:49:32.368Z",
+      "mode": "sandbox",
+      "state": "paid",
+      "allowedActions": [
+        "record_payment"
+      ],
+      "issues": [],
+      "evidence": [
+        {
+          "id": "expected",
+          "kind": "merchant-record",
+          "label": "Expected invoice",
+          "facts": {
+            "orderId": "63W11482XV2348118",
+            "invoiceId": "CP-SBX-20261002-001",
+            "value": "49.00",
+            "currencyCode": "USD",
+            "minor": "4900"
+          }
+        },
+        {
+          "id": "order:63W11482XV2348118",
+          "kind": "order",
+          "label": "Order snapshot",
+          "facts": {
+            "id": "63W11482XV2348118",
+            "status": "COMPLETED",
+            "intent": "CAPTURE",
+            "fetchedAt": "2026-10-02T04:49:32.368Z",
+            "source": "paypal-sandbox"
+          }
+        },
+        {
+          "id": "capture:4D1364913R338640H",
+          "kind": "capture",
+          "label": "Capture in order snapshot",
+          "facts": {
+            "id": "4D1364913R338640H",
+            "status": "COMPLETED",
+            "amount": {
+              "currency_code": "USD",
+              "value": "49.00"
+            }
+          }
+        }
+      ],
+      "duplicateEvents": 0,
+      "amounts": {
+        "currencyCode": "USD",
+        "expectedMinor": "4900",
+        "completedMinor": "4900",
+        "differenceMinor": "0",
+        "expected": "49.00",
+        "completed": "49.00",
+        "difference": "0.00",
+        "scope": "Current COMPLETED captures only; excludes fees and refunds; not a bank-settlement balance."
+      },
+      "execution": "proposal-only"
+    },
+    "provenance": {
+      "kind": "paypal-sandbox",
+      "notice": "Read from PayPal sandbox using server-side credentials. This inspection does not create or capture orders. Sandbox uses fictitious funds; bank settlement is not verified.",
+      "inference": "local-model-response"
+    }
+  }
+}

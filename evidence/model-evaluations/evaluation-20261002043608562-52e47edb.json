@@ -1,0 +1,400 @@
+{
+  "schemaVersion": "1.0",
+  "startedAt": "2026-10-02T04:36:08.562Z",
+  "finishedAt": "2026-10-02T04:36:33.379Z",
+  "requestedModel": "qwen3:4b-instruct-2507-q4_K_M",
+  "endpoint": "http://127.0.0.1:11434/api/chat",
+  "provenance": {
+    "inference": "local-ollama-http",
+    "input": "six-hand-authored-synthetic-fixtures",
+    "notice": "This evaluates model proposals on synthetic cases, not PayPal connectivity, live payments or merchant outcomes. Structured acceptance does not certify prose truth or general accuracy."
+  },
+  "limits": {
+    "contextSize": 4096,
+    "maxOutputTokens": 768,
+    "timeoutMs": 120000,
+    "keepAlive": "2m",
+    "temperature": 0
+  },
+  "environment": {
+    "node": "v24.16.0",
+    "platform": "win32",
+    "architecture": "x64"
+  },
+  "sourceSha256": {
+    "../src/ai.js": "03ae14e65cce16c49693f99556bc51e93d11678ffa002daba46232f880ecef98",
+    "../src/reconcile.js": "352420d2c9ac3f9975ff05a244a67effc826212797562978b10136a41500f3cf",
+    "../src/money.js": "f0c47a2e7aebe2ae9d9f6c1131304c48f3c20b07c92b9b286cf10fb514f9c228",
+    "../fixtures/cases.js": "9d222a52354b6f76afa47b235cfbc3f8d919b6f3b6409adda5b2d7b24909ddab",
+    "./evaluate-model.mjs": "31e0087129954cde38daea953a621bad0bc89493b7aabb69dae2f92e874c431e"
+  },
+  "cases": [
+    {
+      "caseId": "duplicate-webhook",
+      "startedAt": "2026-10-02T04:36:08.567Z",
+      "latencyMs": 5861.37,
+      "status": "accepted",
+      "expected": {
+        "state": "paid",
+        "allowedActions": [
+          "record_payment"
+        ],
+        "completedMinor": "4900",
+        "currencyCode": "USD"
+      },
+      "promptSha256": "694569281f663024190f4e0316b3bfef900237e5fbb6c44fc43ea6418bee1174",
+      "rawResponseSha256": "1b86f1c1614aa0045436d3c7a794c10d8ffee11b050dbd5513a23f18068b7512",
+      "runtime": {
+        "model": "qwen3:4b-instruct-2507-q4_K_M",
+        "done": true,
+        "doneReason": "stop",
+        "totalDurationNs": 5835934200,
+        "loadDurationNs": 2444860400,
+        "promptEvalCount": 684,
+        "evalCount": 167,
+        "promptEvalDurationNs": 385937000,
+        "evalDurationNs": 2965963000
+      },
+      "modelMatchesRequest": true,
+      "proposal": {
+        "action": "record_payment",
+        "claimedState": "paid",
+        "claimedCompletedMinor": "4900",
+        "currencyCode": "USD",
+        "evidenceIds": [
+          "expected",
+          "order:FIXTURE-ORDER-001",
+          "capture:FIXTURE-CAPTURE-001",
+          "event:FIXTURE-EVENT-001"
+        ],
+        "reasonCodes": [
+          "state:paid"
+        ],
+        "explanation": "The invoice and order data confirm a completed payment of $49.00 USD. The expected and completed amounts match exactly (4900 minor units), and the state is consistent as 'paid'. All supporting evidence aligns with a valid, verified payment event."
+      },
+      "outputProjection": {
+        "applied": false,
+        "omittedFields": [],
+        "notice": "Only bounded known proposal fields are retained. Validation used the original output; the exact original is represented by its SHA-256 hash."
+      },
+      "validation": {
+        "accepted": true,
+        "errors": [],
+        "execution": "none",
+        "structuredAssertionsVerified": true,
+        "explanationVerified": false,
+        "explanationNotice": "AI draft prose is not semantically verified. The state, amount, action and citation IDs are checked separately."
+      },
+      "error": null
+    },
+    {
+      "caseId": "ready-to-capture",
+      "startedAt": "2026-10-02T04:36:14.429Z",
+      "latencyMs": 3767.68,
+      "status": "rejected",
+      "expected": {
+        "state": "ready_to_capture",
+        "allowedActions": [
+          "capture_order"
+        ],
+        "completedMinor": "0",
+        "currencyCode": "USD"
+      },
+      "promptSha256": "6155cd3be624283316599a2634b680c013af21765735a81fd843f8be750e095a",
+      "rawResponseSha256": "799053685fc6b772393714917b310768d2a9cae5969200f70ba7cfba0b3c3d73",
+      "runtime": {
+        "model": "qwen3:4b-instruct-2507-q4_K_M",
+        "done": true,
+        "doneReason": "stop",
+        "totalDurationNs": 3764183900,
+        "loadDurationNs": 149330700,
+        "promptEvalCount": 534,
+        "evalCount": 165,
+        "promptEvalDurationNs": 140734000,
+        "evalDurationNs": 3411588000
+      },
+      "modelMatchesRequest": true,
+      "proposal": {
+        "action": "capture_order",
+        "claimedState": "captured",
+        "claimedCompletedMinor": "4900",
+        "currencyCode": "USD",
+        "evidenceIds": [
+          "expected",
+          "order:FIXTURE-ORDER-001"
+        ],
+        "reasonCodes": [
+          "state:ready_to_capture"
+        ],
+        "explanation": "The invoice and order data indicate a valid expected amount of $49.00 (4900 minor units) with no prior completed captures. The order is approved and intends to be captured. Therefore, capturing the order is both permitted and justified. The state transition from 'ready_to_capture' to 'captured' is consistent with the fixture data and the allowed action."
+      },
+      "outputProjection": {
+        "applied": false,
+        "omittedFields": [],
+        "notice": "Only bounded known proposal fields are retained. Validation used the original output; the exact original is represented by its SHA-256 hash."
+      },
+      "validation": {
+        "accepted": false,
+        "errors": [
+          "Claimed state conflicts with reconciliation.",
+          "Claimed amount or currency conflicts with reconciliation."
+        ],
+        "execution": "none",
+        "structuredAssertionsVerified": false,
+        "explanationVerified": false,
+        "explanationNotice": "AI draft prose is not semantically verified. The state, amount, action and citation IDs are checked separately."
+      },
+      "error": null
+    },
+    {
+      "caseId": "pending-capture",
+      "startedAt": "2026-10-02T04:36:18.196Z",
+      "latencyMs": 3642.74,
+      "status": "accepted",
+      "expected": {
+        "state": "pending",
+        "allowedActions": [
+          "wait",
+          "refresh_order"
+        ],
+        "completedMinor": "0",
+        "currencyCode": "USD"
+      },
+      "promptSha256": "295ce42ca6b18fbe7ba82445a80ef936427af5c74e9be7f54d3f5183cf1a8dad",
+      "rawResponseSha256": "0072acdb28949859022f6727f3cc30d5baba7a6c9f56a8e2c47bb2d0f55caf8a",
+      "runtime": {
+        "model": "qwen3:4b-instruct-2507-q4_K_M",
+        "done": true,
+        "doneReason": "stop",
+        "totalDurationNs": 3641168100,
+        "loadDurationNs": 125776300,
+        "promptEvalCount": 594,
+        "evalCount": 167,
+        "promptEvalDurationNs": 168469000,
+        "evalDurationNs": 3269077000
+      },
+      "modelMatchesRequest": true,
+      "proposal": {
+        "action": "wait",
+        "claimedState": "pending",
+        "claimedCompletedMinor": "0",
+        "currencyCode": "USD",
+        "evidenceIds": [
+          "expected",
+          "order:FIXTURE-ORDER-001",
+          "capture:FIXTURE-CAPTURE-001"
+        ],
+        "reasonCodes": [
+          "state:pending"
+        ],
+        "explanation": "The invoice is pending and no completed capture has been recorded. The expected amount of $49.00 USD has not been reflected in completed captures. The order status is COMPLETED, but the capture remains PENDING. Therefore, the state remains pending until a capture is completed and recorded. Waiting allows the system to reconcile the state with actual capture events."
+      },
+      "outputProjection": {
+        "applied": false,
+        "omittedFields": [],
+        "notice": "Only bounded known proposal fields are retained. Validation used the original output; the exact original is represented by its SHA-256 hash."
+      },
+      "validation": {
+        "accepted": true,
+        "errors": [],
+        "execution": "none",
+        "structuredAssertionsVerified": true,
+        "explanationVerified": false,
+        "explanationNotice": "AI draft prose is not semantically verified. The state, amount, action and citation IDs are checked separately."
+      },
+      "error": null
+    },
+    {
+      "caseId": "amount-mismatch",
+      "startedAt": "2026-10-02T04:36:21.839Z",
+      "latencyMs": 4002.34,
+      "status": "rejected",
+      "expected": {
+        "state": "underpaid",
+        "allowedActions": [
+          "refresh_order",
+          "manual_review"
+        ],
+        "completedMinor": "3900",
+        "currencyCode": "USD"
+      },
+      "promptSha256": "bef0531a6fc38b1d8a1796591b27fb45c10eeed640364a3a2597f553afb2c7bc",
+      "rawResponseSha256": "d5c25ce06ebc9694a204935b6c04ab96d94c4d7aec66991db42e51666363c0d9",
+      "runtime": {
+        "model": "qwen3:4b-instruct-2507-q4_K_M",
+        "done": true,
+        "doneReason": "stop",
+        "totalDurationNs": 3999453000,
+        "loadDurationNs": 140543400,
+        "promptEvalCount": 600,
+        "evalCount": 183,
+        "promptEvalDurationNs": 136171000,
+        "evalDurationNs": 3647904000
+      },
+      "modelMatchesRequest": true,
+      "proposal": {
+        "action": "manual_review",
+        "claimedState": "underpaid",
+        "claimedCompletedMinor": "3900",
+        "currencyCode": "USD",
+        "evidenceIds": [
+          "expected",
+          "order:FIXTURE-ORDER-001",
+          "capture:FIXTURE-CAPTURE-001"
+        ],
+        "reasonCodes": [
+          "underpaid"
+        ],
+        "explanation": "The invoice shows an expected amount of $49.00, but only $39.00 has been captured in the order. This results in a $10.00 shortfall. The merchant is required to manually review the discrepancy to determine if further action is needed, such as adjusting the invoice or investigating the capture. The state remains underpaid as the completed amount does not match the expected value."
+      },
+      "outputProjection": {
+        "applied": false,
+        "omittedFields": [],
+        "notice": "Only bounded known proposal fields are retained. Validation used the original output; the exact original is represented by its SHA-256 hash."
+      },
+      "validation": {
+        "accepted": false,
+        "errors": [
+          "Explanation reason codes must come from reconciliation."
+        ],
+        "execution": "none",
+        "structuredAssertionsVerified": false,
+        "explanationVerified": false,
+        "explanationNotice": "AI draft prose is not semantically verified. The state, amount, action and citation IDs are checked separately."
+      },
+      "error": null
+    },
+    {
+      "caseId": "stale-snapshot",
+      "startedAt": "2026-10-02T04:36:25.842Z",
+      "latencyMs": 3752.25,
+      "status": "accepted",
+      "expected": {
+        "state": "review_required",
+        "allowedActions": [
+          "refresh_order",
+          "manual_review"
+        ],
+        "completedMinor": "4900",
+        "currencyCode": "USD"
+      },
+      "promptSha256": "a9cab23130c5fe2430a852539349a6911c68a8dda803ebf496f41dadf161fbb5",
+      "rawResponseSha256": "68e846cc1a424504a8941aee3eb06b676bc08f23c5b99c0eb30355d497092199",
+      "runtime": {
+        "model": "qwen3:4b-instruct-2507-q4_K_M",
+        "done": true,
+        "doneReason": "stop",
+        "totalDurationNs": 3750091200,
+        "loadDurationNs": 178793800,
+        "promptEvalCount": 621,
+        "evalCount": 158,
+        "promptEvalDurationNs": 151712000,
+        "evalDurationNs": 3358229000
+      },
+      "modelMatchesRequest": true,
+      "proposal": {
+        "action": "manual_review",
+        "claimedState": "review_required",
+        "claimedCompletedMinor": "4900",
+        "currencyCode": "USD",
+        "evidenceIds": [
+          "expected",
+          "order:FIXTURE-ORDER-001",
+          "capture:FIXTURE-CAPTURE-001"
+        ],
+        "reasonCodes": [
+          "SNAPSHOT_STALE"
+        ],
+        "explanation": "The invoice and order snapshot show a consistent amount of $49.00 USD, with no discrepancies. The state is 'review_required' due to a stale snapshot, but the data is current and matches the expected value. Manual review is appropriate to confirm alignment before finalizing."
+      },
+      "outputProjection": {
+        "applied": false,
+        "omittedFields": [],
+        "notice": "Only bounded known proposal fields are retained. Validation used the original output; the exact original is represented by its SHA-256 hash."
+      },
+      "validation": {
+        "accepted": true,
+        "errors": [],
+        "execution": "none",
+        "structuredAssertionsVerified": true,
+        "explanationVerified": false,
+        "explanationNotice": "AI draft prose is not semantically verified. The state, amount, action and citation IDs are checked separately."
+      },
+      "error": null
+    },
+    {
+      "caseId": "unverified-webhook",
+      "startedAt": "2026-10-02T04:36:29.595Z",
+      "latencyMs": 3783.92,
+      "status": "rejected",
+      "expected": {
+        "state": "ready_to_capture",
+        "allowedActions": [
+          "capture_order"
+        ],
+        "completedMinor": "0",
+        "currencyCode": "USD"
+      },
+      "promptSha256": "b3bd5f3059666576a78eb904d8c0a9f5ac1dee5b32971ab8574316368dd5e268",
+      "rawResponseSha256": "d4110a62ca10b671ffd62bf21c79a6aa9fe00fde2a6bcd244fdc319bc2984dd1",
+      "runtime": {
+        "model": "qwen3:4b-instruct-2507-q4_K_M",
+        "done": true,
+        "doneReason": "stop",
+        "totalDurationNs": 3782053100,
+        "loadDurationNs": 180391800,
+        "promptEvalCount": 569,
+        "evalCount": 156,
+        "promptEvalDurationNs": 151777000,
+        "evalDurationNs": 3373896000
+      },
+      "modelMatchesRequest": true,
+      "proposal": {
+        "action": "capture_order",
+        "claimedState": "captured",
+        "claimedCompletedMinor": "4900",
+        "currencyCode": "USD",
+        "evidenceIds": [
+          "expected",
+          "order:FIXTURE-ORDER-001"
+        ],
+        "reasonCodes": [
+          "EVENT_UNVERIFIED"
+        ],
+        "explanation": "The invoice and order data indicate a valid expected amount of $49.00 USD. The order is approved and intends to be captured. The discrepancy in completed amount (0.00) suggests no prior capture, so capturing now aligns with the expected value. This action resolves the mismatch and reflects the correct state of the order."
+      },
+      "outputProjection": {
+        "applied": false,
+        "omittedFields": [],
+        "notice": "Only bounded known proposal fields are retained. Validation used the original output; the exact original is represented by its SHA-256 hash."
+      },
+      "validation": {
+        "accepted": false,
+        "errors": [
+          "Claimed state conflicts with reconciliation.",
+          "Claimed amount or currency conflicts with reconciliation."
+        ],
+        "execution": "none",
+        "structuredAssertionsVerified": false,
+        "explanationVerified": false,
+        "explanationNotice": "AI draft prose is not semantically verified. The state, amount, action and citation IDs are checked separately."
+      },
+      "error": null
+    }
+  ],
+  "summary": {
+    "total": 6,
+    "accepted": 3,
+    "rejected": 3,
+    "errors": 0,
+    "incomplete": 0,
+    "completedModelResponses": 6,
+    "reportedModels": [
+      "qwen3:4b-instruct-2507-q4_K_M"
+    ],
+    "allReportedModelsMatchRequest": true,
+    "actualLocalInferenceObserved": true,
+    "allCasesCompleted": true,
+    "totalCaseLatencyMs": 24810.3
+  }
+}

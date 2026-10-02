@@ -1,0 +1,35 @@
+{
+  "recordedAt": "2026-10-02T04:50:37.554Z",
+  "caseId": "cp-live-sandbox-002",
+  "provenance": {
+    "kind": "stored-replay",
+    "source": "paypal-sandbox",
+    "notice": "Replay of saved verified JSON; original source and timestamps are preserved. No new PayPal delivery or verification occurred."
+  },
+  "notice": "One actual PayPal sandbox webhook verified via PayPal postback, then replayed locally twice. This is not two network deliveries or new signature verification.",
+  "original": [
+    {
+      "id": "WH-3JF99413UD730984M-3WE900643R479401V",
+      "type": "PAYMENT.CAPTURE.COMPLETED",
+      "source": "paypal-sandbox",
+      "receivedAt": "2026-10-02T04:49:13.369Z",
+      "verification": {
+        "status": "SUCCESS",
+        "method": "paypal-postback",
+        "checkedAt": "2026-10-02T04:49:13.369Z"
+      },
+      "recordHash": "7a60c66eed59da03ba007ac03336e8bfe02a6f8eb0db8eb679cd98f0692edb07"
+    }
+  ],
+  "singleDelivery": {
+    "state": "paid",
+    "completed": "49.00",
+    "duplicateEvents": 0
+  },
+  "twoStoredCopies": {
+    "state": "paid",
+    "completed": "49.00",
+    "duplicateEvents": 1
+  },
+  "pass": true
+}
