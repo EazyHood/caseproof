@@ -1,0 +1,111 @@
+{
+  "input": {
+    "expected": {
+      "orderId": "FIXTURE-ORDER-001",
+      "invoiceId": "CP-1042",
+      "value": "49.00",
+      "currencyCode": "USD"
+    },
+    "order": {
+      "data": {
+        "id": "FIXTURE-ORDER-001",
+        "intent": "CAPTURE",
+        "status": "COMPLETED",
+        "purchase_units": [
+          {
+            "invoice_id": "CP-1042",
+            "amount": {
+              "currency_code": "USD",
+              "value": "49.00"
+            },
+            "payments": {
+              "captures": [
+                {
+                  "id": "FIXTURE-CAPTURE-001",
+                  "status": "PENDING",
+                  "amount": {
+                    "currency_code": "USD",
+                    "value": "49.00"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "source": "synthetic-fixture",
+      "fetchedAt": "2026-10-02T05:00:10Z"
+    },
+    "observedAt": "2026-10-02T05:00:20Z",
+    "events": []
+  },
+  "result": {
+    "schemaVersion": "1.0",
+    "orderId": "FIXTURE-ORDER-001",
+    "invoiceId": "CP-1042",
+    "observedAt": "2026-10-02T05:00:20Z",
+    "mode": "fixture",
+    "state": "pending",
+    "allowedActions": [
+      "wait",
+      "refresh_order"
+    ],
+    "issues": [],
+    "evidence": [
+      {
+        "id": "expected",
+        "kind": "merchant-record",
+        "label": "Expected invoice",
+        "facts": {
+          "orderId": "FIXTURE-ORDER-001",
+          "invoiceId": "CP-1042",
+          "value": "49.00",
+          "currencyCode": "USD",
+          "minor": "4900"
+        }
+      },
+      {
+        "id": "order:FIXTURE-ORDER-001",
+        "kind": "order",
+        "label": "Order snapshot",
+        "facts": {
+          "id": "FIXTURE-ORDER-001",
+          "status": "COMPLETED",
+          "intent": "CAPTURE",
+          "fetchedAt": "2026-10-02T05:00:10Z",
+          "source": "synthetic-fixture"
+        }
+      },
+      {
+        "id": "capture:FIXTURE-CAPTURE-001",
+        "kind": "capture",
+        "label": "Capture in order snapshot",
+        "facts": {
+          "id": "FIXTURE-CAPTURE-001",
+          "status": "PENDING",
+          "amount": {
+            "currency_code": "USD",
+            "value": "49.00"
+          }
+        }
+      }
+    ],
+    "duplicateEvents": 0,
+    "amounts": {
+      "currencyCode": "USD",
+      "expectedMinor": "4900",
+      "completedMinor": "0",
+      "differenceMinor": "4900",
+      "expected": "49.00",
+      "completed": "0.00",
+      "difference": "49.00",
+      "scope": "Current COMPLETED captures only; excludes fees and refunds; not a bank-settlement balance."
+    },
+    "execution": "proposal-only"
+  },
+  "provenance": {
+    "kind": "synthetic-fixture",
+    "delivery": "static-precomputed",
+    "notice": "Offline demo: hand-authored synthetic scenario, reconciled during the build. Its scenario timestamps are fixed. No PayPal request or model inference runs on this page."
+  }
+}

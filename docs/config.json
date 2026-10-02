@@ -1,0 +1,19 @@
+{
+  "mode": "offline-demo",
+  "aiConfigured": false,
+  "sandboxConfigured": false,
+  "repositoryUrl": "https://github.com/EazyHood/caseproof",
+  "cases": [
+    "duplicate-webhook",
+    "ready-to-capture",
+    "pending-capture",
+    "amount-mismatch",
+    "stale-snapshot",
+    "unverified-webhook"
+  ],
+  "recordedEvidence": {
+    "path": "./evidence/recorded-sandbox.json",
+    "observedAt": "2026-10-02T04:45:20.692Z",
+    "notice": "Recorded 49.00 USD sandbox capture. Observed 2026-10-02T04:45:20.692Z. Fictitious funds; this saved record is not a live status check."
+  }
+}

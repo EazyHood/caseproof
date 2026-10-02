@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1.0",
+  "provenance": {
+    "kind": "recorded-paypal-sandbox",
+    "source": "paypal-sandbox",
+    "notice": "Recorded authentic sandbox evidence, with fictitious funds. This static page makes no PayPal request, refreshes no status and performs no model inference. This is not a bank-settlement confirmation."
+  },
+  "exportedAt": "2026-10-02T04:45:52.258Z",
+  "observedAt": "2026-10-02T04:45:20.692Z",
+  "order": {
+    "id": "63W11482XV2348118",
+    "status": "COMPLETED"
+  },
+  "invoice": {
+    "id": "CP-SBX-20261002-001",
+    "expected": "49.00",
+    "currencyCode": "USD"
+  },
+  "captures": [
+    {
+      "id": "4D1364913R338640H",
+      "status": "COMPLETED",
+      "amount": {
+        "value": "49.00",
+        "currencyCode": "USD"
+      }
+    }
+  ],
+  "reconciliationAtObservation": {
+    "state": "paid",
+    "completed": "49.00",
+    "completedMinor": "4900",
+    "currencyCode": "USD"
+  },
+  "receipt": {
+    "recordCount": 9,
+    "latestRecordHash": "f05fe55d46ae855968a3e5808c4ed3f1d29447fab145b4f70acfc9983e5e4943"
+  },
+  "source": {
+    "file": "evidence/exports/cp-live-sandbox-001-1790916352260-2e56d58c.json",
+    "sha256": "b541e88147fa14f64480666a969651c6720b4a4f0a6424dd442f67177820f875"
+  }
+}
