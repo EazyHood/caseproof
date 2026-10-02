@@ -2,7 +2,11 @@
 
 Record date: 2 October 2026 UTC / 1 October Colombia. Environment: Windows, Node 24.16.0.
 
+**Submission confirmed:** [Devpost entry](https://devpost.com/software/caseproof-5gmdck) · [Unlisted video](https://youtu.be/nZk1ntRACYs) · [Offline demo](https://eazyhood.github.io/caseproof/) · [Source](https://github.com/EazyHood/caseproof) · [Receipt](./submission/RECEIPT.md)
+
 The coordinator's integrated `node --test` run passed **126/126** tests on 2 October 2026 at approximately **04:50 UTC**. Earlier recorded runs included **97/97** after the inspection-ID backend changes, **20/20** targeted HTTP tests, **13/13** direct AI/evaluation tests and **21/21** evidence-store tests. The static-build plus HTTP suite passed **27/27**; an independent review found and helped close a timing race in the DOM test by awaiting startup directly. `node --check` passed for the server, frontend and static builder. These counts describe recorded executions, not inferred coverage or real-service calls.
+
+The coordinator identifies `420a58e` as the submitted code reference; subsequent changes are documentation only. The 126/126 result is the previously completed execution, not a claim that tests were rerun for these documentation updates.
 
 Automated provider/model transport tests use in-memory stubs; their financial examples are hand-authored synthetic fixtures. Separate saved evaluations below contain actual local model calls using those same fixtures. Two authentic sandbox cases, a verified webhook and a saved inspection/model response are documented separately. None of these results establishes real-money settlement, merchant outcomes or a deployed application.
 
@@ -73,6 +77,8 @@ The [minimized export for `cp-live-sandbox-002`](./evidence/exports/cp-live-sand
 
 The verification metadata and original record hash are retained in the [verified-event replay artifact](./evidence/exports/sandbox-002-verified-replay.json), recorded at `2026-10-02T04:50:37.554Z`. One saved event gives `duplicateEvents:0`; two local copies give `duplicateEvents:1`. Both reconcile to `paid` and `49.00` completed. This demonstrates deduplication of the same authentic, previously verified event in a local replay. **It does not demonstrate two PayPal network deliveries, a new verification during replay, or a second capture.** Hash references help trace the local records; the minimized files are not independent PayPal attestations.
 
+The [temporary-webhook cleanup record](./evidence/exports/temporary-webhook-cleanup.json) records deletion of the single demonstration subscription `0VY50834RT786193A` with HTTP **204** at `2026-10-02T04:52:22.008Z`. The verified replay evidence was retained. The coordinator also confirmed that the public tunnel was stopped. This cleanup does not remove or change any unrelated subscription, order or saved evidence and does not claim an ongoing public receiver.
+
 ## Actual local model evaluations
 
 Ollama **0.32.1** is installed. The official **`qwen3:4b-instruct-2507-q4_K_M`** model download (approximately 2.5 GB) was SHA-checked by the coordinator. The following reports contain **18 completed local model responses**, all on the six hand-authored development fixtures. Their reported model matches the request; all responses completed with `done:true` and `doneReason:stop`. This count covers only these three saved batch evaluations.
@@ -87,11 +93,15 @@ The earlier failures remain preserved. They include claiming captured funds befo
 
 **Structural acceptance is not prose truth or general accuracy.** The baseline accepted a stale-snapshot explanation that called its data current. The final run still says an invoice is “already marked as paid” despite no accounting action, and one explanation describes completed amount zero as matching an expected 49.00 USD. These are real observed limitations, not hypothetical caveats. The six scenarios were reused during development; this is not an independent held-out benchmark. The final schema supplies the permissible values, so 6/6 must not be presented as unconstrained model reasoning accuracy.
 
-## Still unverified
+## Publication and submission verification
 
-Public deployment, final project submission and judging access remain unverified. Authentic sandbox create/approve/capture/read, inspected-order AI, one genuine verified webhook, its explicitly local replay and the integrated test run are recorded above. A second network delivery, production operation and real-money proceeds are not claimed.
+The [public repository](https://github.com/EazyHood/caseproof) and [GitHub Pages offline demo](https://eazyhood.github.io/caseproof/) are available. A read-only HTTP check returned 200 for the demo, its configuration, local-run instructions and historical receipt; all matched the local build. The four linked integration artifacts and MIT license also returned 200 and matched their local files. The published configuration disables both PayPal and model services and points to the actual source repository. This is public access to an offline demonstration, not service-enabled public hosting.
 
-PayPal and Qloo event registrations are confirmed. The Caseproof Devpost draft (`1209870-caseproof`) is saved at **2/5**; no project submission has been sent. Qloo's API-key request is confirmed and delivery is pending by email, with several business days expected. These administrative milestones are separate from technical integration evidence. The [MIT License](./LICENSE) is now included, copyright 2026 Jhonatan del Rio Mejia. Repository publication and a public or unlisted YouTube video under three minutes remain pending.
+The [video](https://youtu.be/nZk1ntRACYs) is published as **unlisted** and YouTube checks reported **no issues**. In a separate browser, playback advanced to **10.67 seconds** of **133.121 seconds**, with `readyState:4`. This confirms playback started successfully and the duration is under three minutes; it is not a claim that every frame was reviewed in that playback check. Devpost embeds the same video. Authentic sandbox create/approve/capture/read, inspected-order AI, one genuine verified webhook, its explicitly local replay and the integrated test run are recorded above. A second network delivery, production operation and real-money proceeds are not claimed.
+
+Devpost confirmed Caseproof submission **1209870** at [caseproof-5gmdck](https://devpost.com/software/caseproof-5gmdck) with **“Project submitted!”** and **“SUBMITTED TO — PayPal AI Hackathon”**. The saved [accessibility snapshot](./submission/devpost-submitted-ax.txt) contains those confirmations and the submitted story, video, demo and repository links. The screenshot is `../../outputs/busqueda-nuevas-2026-10-01/caseproof-submitted.png` in the local workspace. The [submission receipt](./submission/RECEIPT.md) identifies these records. This confirms submission, not an award or completion of judging.
+
+PayPal and Qloo event registrations are confirmed. Qloo's API-key request remains pending: the latest mailbox search found its Google Forms receipt and starter kit, but no key. These administrative milestones are separate from technical integration evidence. The [MIT License](./LICENSE) is included, copyright 2026 Jhonatan del Rio Mejia, and the repository is public.
 
 ## Local HTTP and UI verification
 
@@ -109,4 +119,4 @@ PayPal and Qloo event registrations are confirmed. The Caseproof Devpost draft (
 
 PNG evidence is in `../../outputs/busqueda-nuevas-2026-10-01/`: `caseproof-desktop.png`, `caseproof-tablet-768.png`, `caseproof-mobile-375.png`, `caseproof-preview.png`. These are fresh native browser captures of synthetic fixture mode, not evidence of a live payment. The mobile/desktop evidence was recaptured on the normal app after closing the injected QA server tab.
 
-No physical mobile device test, full assistive-technology audit, merchant trial or independent semantic-accuracy study has been performed. The app currently uses an intentional light theme. UI, server and core remain a local prototype, not a submitted entry.
+No physical mobile device test, full assistive-technology audit, merchant trial or independent semantic-accuracy study has been performed. The app currently uses an intentional light theme. The submitted project remains a prototype: its service-enabled workbench runs locally and the public demo is explicitly offline.

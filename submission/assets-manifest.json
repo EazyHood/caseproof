@@ -1,0 +1,32 @@
+[
+  {
+    "path": "submission/project-story.md",
+    "bytes": 3278,
+    "sha256": "7085d0e707faaa6d18bee556dcc4192cdd0871b9e52f5e8db09ccbeb7c90c731"
+  },
+  {
+    "path": "submission/caseproof-cover.png",
+    "bytes": 72976,
+    "sha256": "30b541983b874d973843faea5d8fab5388ceba973f6cf21c0a96f090e631887b"
+  },
+  {
+    "path": "media/caseproof-demo.mp4",
+    "bytes": 5177897,
+    "sha256": "0064d7205af5bd471d283539519989393af9b5f72aa2181ebd86f0b1ac029f5b"
+  },
+  {
+    "path": "media/build/04-replay.png",
+    "bytes": 114313,
+    "sha256": "7c65f89ed8642808110728b4d62e8a6009289b49462884a9661c02a3ed699da0"
+  },
+  {
+    "path": "media/build/05-model.png",
+    "bytes": 111107,
+    "sha256": "2d22aabaa37100f55b07039262095cb7e341e73b76a03887df50c17f178b13ad"
+  },
+  {
+    "path": "../../outputs/busqueda-nuevas-2026-10-01/caseproof-captured-real.png",
+    "bytes": 162039,
+    "sha256": "644863c1a596264107681df46fca410c7c4df047f1b704f04a2d0a6bc88f4fb9"
+  }
+]

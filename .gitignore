@@ -13,3 +13,6 @@ credentials/
 *.key
 *.p12
 *.pfx
+media/
+submission/devpost-submitted-ax.txt
+submission/additional-info.json

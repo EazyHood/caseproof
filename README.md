@@ -2,7 +2,9 @@
 
 A small PayPal **sandbox-only** reconciliation core for answering: “Was this invoice captured once, and what evidence supports the next action?”
 
-**Current evidence: two authentic PayPal sandbox orders were captured for 49.00 USD each in fictitious funds; a genuine capture webhook was received and verified through PayPal's postback API.** The first order's [saved timeline](./evidence/exports/sandbox-001-timeline.json) records CREATED → APPROVED → COMPLETED, and its [recorded local-model response](./evidence/exports/sandbox-001-local-ai.json) uses a fresh sandbox read. The second order's [minimized export](./evidence/exports/cp-live-sandbox-002-1790916633232-2b97bef0.json) includes the verified event. A [labeled local replay](./evidence/exports/sandbox-002-verified-replay.json) supplies that saved event twice and still counts 49.00 USD once; it is not evidence of two network deliveries. Three saved evaluations contain another 18 local model responses on synthetic cases. The coordinator's full test run passed **126/126** on 2 October 2026 at approximately 04:50 UTC. This is a local prototype; no public deployment or project submission is recorded. See [BRIEF.md](./BRIEF.md) and [VALIDATION.md](./VALIDATION.md).
+**Submitted to the PayPal AI Hackathon.** [Devpost entry](https://devpost.com/software/caseproof-5gmdck) · [2:13 unlisted video](https://youtu.be/nZk1ntRACYs) · [Offline demo](https://eazyhood.github.io/caseproof/) · [Source repository](https://github.com/EazyHood/caseproof) · [Submission receipt](./submission/RECEIPT.md)
+
+**Current evidence: two authentic PayPal sandbox orders were captured for 49.00 USD each in fictitious funds; a genuine capture webhook was received and verified through PayPal's postback API.** The first order's [saved timeline](./evidence/exports/sandbox-001-timeline.json) records CREATED → APPROVED → COMPLETED, and its [recorded local-model response](./evidence/exports/sandbox-001-local-ai.json) uses a fresh sandbox read. The second order's [minimized export](./evidence/exports/cp-live-sandbox-002-1790916633232-2b97bef0.json) includes the verified event. A [labeled local replay](./evidence/exports/sandbox-002-verified-replay.json) supplies that saved event twice and still counts 49.00 USD once; it is not evidence of two network deliveries. Three saved evaluations contain another 18 local model responses on synthetic cases. The coordinator's full test run passed **126/126** on 2 October 2026 at approximately 04:50 UTC. The submitted code reference is `420a58e`; subsequent changes are documentation only. The public demo is offline, while the service-enabled workbench runs locally. See [BRIEF.md](./BRIEF.md) and [VALIDATION.md](./VALIDATION.md).
 
 ## Run without accounts or packages
 
@@ -17,7 +19,9 @@ The demo runs six hand-authored cases, prints the decision and remains offline. 
 
 ## Static preview
 
-`node scripts/build-static.mjs` builds `dist/` from an explicit 12-file allowlist: the interface, public configuration, local-run instructions, six precomputed synthetic scenarios and a minimized record of the first authentic sandbox capture. It does not copy credentials, private evidence or temporary artifacts. To include the source link, pass `--repository` with the actual HTTPS GitHub repository URL. The current unconfigured preview does not invent that link.
+Open the [public offline demo](https://eazyhood.github.io/caseproof/). Its source link points to the [public repository](https://github.com/EazyHood/caseproof).
+
+`node scripts/build-static.mjs --repository https://github.com/EazyHood/caseproof` builds `dist/` from an explicit 12-file allowlist: the interface, public configuration, local-run instructions, six precomputed synthetic scenarios and a minimized record of the first authentic sandbox capture. It does not copy credentials, private evidence or temporary artifacts. The published preview includes the configured source link.
 
 Serve `dist/` with a static web server or publish that directory through a static host. Its **Offline demo / synthetic scenarios** banner distinguishes the scenarios from the separate historical sandbox record. PayPal inspection and local inference are disabled; opening the preview makes no PayPal or model calls and does not refresh the recorded evidence. The local app below enables those services when configured. Building this directory does not deploy it.
 
@@ -106,7 +110,7 @@ The only allowed origin is `https://api-m.sandbox.paypal.com`. Redirects are rej
 
 `node src/inspect-sandbox.js` is an explicit read-only check using the environment names in `.env.example`. It fetches one existing order and prints a minimized reconciliation result. No credentials are embedded or loaded automatically. If you use a local `.env`, Node supports `node --env-file=.env src/inspect-sandbox.js`; keep that file untracked. Recorded authentic sandbox results are described in [VALIDATION.md](./VALIDATION.md).
 
-Before exposing a mutation endpoint, add authentication, order ownership checks, request/body validation and an explicit operator action after a fresh reconciliation, using the persistent request keys below. Do not expose the low-level client directly to the browser. The separate [webhook receiver](./WEBHOOK-RECEIVER.md) has now received and stored a genuine sandbox event after successful postback verification; its controlled demonstration is not a production hosting service.
+Before exposing a mutation endpoint, add authentication, order ownership checks, request/body validation and an explicit operator action after a fresh reconciliation, using the persistent request keys below. Do not expose the low-level client directly to the browser. The separate [webhook receiver](./WEBHOOK-RECEIVER.md) received and stored a genuine sandbox event after successful postback verification. Its single temporary subscription was then [removed with HTTP 204](./evidence/exports/temporary-webhook-cleanup.json), and the coordinator stopped the public tunnel. The saved evidence remains available; no ongoing public receiver is claimed.
 
 ## Persistent evidence and sandbox workflow
 
@@ -148,9 +152,9 @@ Proposal schema:
 
 One invoice/order/purchase unit, CAPTURE intent, USD/EUR/GBP. Fees, refunds, chargebacks, bank settlement, split orders, multi-party payments and production payments are not calculated. Refund/reversal evidence routes to review. No SLA, security audit, user adoption, measured savings or payment certainty beyond the inspected snapshot is claimed.
 
-To finish the submission: record a complete demonstration, publish an accessible repository and a public or unlisted YouTube video under three minutes, and complete the project fields. Broader semantic evaluation, user validation and production hardening remain open. The genuine webhook, labeled local replay and integrated test run are recorded in [VALIDATION.md](./VALIDATION.md).
+The repository and offline demo are public. The [demonstration video](https://youtu.be/nZk1ntRACYs) is published as unlisted, with a duration of 133.121 seconds. YouTube checks reported no issues, and a separate browser playback advanced to 10.67 seconds. Broader semantic evaluation, user validation and production hardening remain open. The genuine webhook, labeled local replay and integrated test run are recorded in [VALIDATION.md](./VALIDATION.md).
 
-PayPal hackathon registration is confirmed. The Caseproof Devpost draft (`1209870-caseproof`) exists at step **2/5**; the project submission has **not** been sent. Registration and a saved draft are not evidence of a completed entry or a PayPal integration.
+The [Caseproof Devpost entry](https://devpost.com/software/caseproof-5gmdck), submission **1209870**, was submitted to the PayPal AI Hackathon. Devpost displayed **“Project submitted!”** and **“SUBMITTED TO — PayPal AI Hackathon”**. The [receipt](./submission/RECEIPT.md) records the URLs, confirmation evidence and tested code context. Submission is not a judging result or prize claim.
 
 ## License
 

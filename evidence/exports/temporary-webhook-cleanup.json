@@ -1,0 +1,8 @@
+{
+  "at": "2026-10-02T04:52:22.008Z",
+  "environment": "paypal-sandbox",
+  "webhookId": "0VY50834RT786193A",
+  "action": "removed temporary proof receiver subscription after verified capture event was saved",
+  "httpStatus": 204,
+  "retainedEvidence": "sandbox-002-verified-replay.json"
+}

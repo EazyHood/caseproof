@@ -1,6 +1,8 @@
 # Caseproof — payment exceptions, with receipts
 
-Status: local prototype with two authentic PayPal sandbox captures, a saved create → buyer approval → capture → read timeline, persistent evidence storage and local AI analysis of a freshly inspected sandbox order. Each capture is 49.00 USD in fictitious funds. A genuine webhook was received and verified via PayPal postback; a labeled local replay of two copies preserves one captured total. Three local model evaluations on synthetic cases are also preserved. The coordinator's full suite passed 126/126 at approximately 04:50 UTC on 2 October 2026. PayPal hackathon registration is confirmed; the Caseproof Devpost draft (`1209870-caseproof`) is saved at step 2/5. No public deployment or project submission is claimed.
+**Submitted:** [Devpost](https://devpost.com/software/caseproof-5gmdck) · [Unlisted video](https://youtu.be/nZk1ntRACYs) · [Offline demo](https://eazyhood.github.io/caseproof/) · [MIT repository](https://github.com/EazyHood/caseproof) · [Receipt](./submission/RECEIPT.md)
+
+Status: submitted prototype with two authentic PayPal sandbox captures, a saved create → buyer approval → capture → read timeline, persistent evidence storage and local AI analysis of a freshly inspected sandbox order. Each capture is 49.00 USD in fictitious funds. A genuine webhook was received and verified via PayPal postback; a labeled local replay of two copies preserves one captured total. Three local model evaluations on synthetic cases are also preserved. The coordinator's full suite passed 126/126 at approximately 04:50 UTC on 2 October 2026; code reference `420a58e` is unchanged by later documentation edits. The repository and offline demo are public; the service-enabled workbench runs locally. Devpost confirmed submission **1209870** to the PayPal AI Hackathon. The 133.121-second video is unlisted, YouTube checks found no issues, and playback was verified in a separate browser.
 
 ## User and moment of use
 
@@ -21,14 +23,15 @@ The intended difference from a generic payment dashboard or chat answer is an ev
 - Inspected-order AI: opaque five-minute inspection IDs bind the expected invoice in server memory. Analysis fetches the order again, recomputes reconciliation and returns the same current result shown in the UI. Client-supplied results are not accepted; test adapters retain synthetic provenance.
 - Actual model evidence: Ollama 0.32.1 with official `qwen3:4b-instruct-2507-q4_K_M` (approximately 2.5 GB, download SHA-checked). Eighteen completed responses across three six-fixture evaluations yielded 3/6, 4/6 and 6/6 structural acceptance. This is not a prose-accuracy result. Reports and concrete errors are linked in [VALIDATION.md](./VALIDATION.md).
 - Integration boundary: `src/index.js`; frontend may import the pure engine and fixture module. Keep `paypal.js` and any credential-dependent use on the server.
-- Static preview: an allowlisted 12-file build provides six explicitly synthetic scenarios and a separate historical sandbox record. Inspection and model controls are disabled with local-run instructions. The build and its paths/provenance were independently reviewed; publication is pending.
-- Still pending: a built-in checkout UI, login, public deployment, refund ledger, multi-currency settlement and broader semantic/user evaluation. The completed buyer approval used PayPal's sandbox interface. Final demonstration and submission packaging remain to be completed.
+- Static preview: the [published allowlisted 12-file build](https://eazyhood.github.io/caseproof/) provides six explicitly synthetic scenarios and a separate historical sandbox record. Inspection and model controls are disabled with local-run instructions. The build and its paths/provenance were independently reviewed.
+- Temporary receiver cleanup: the single demonstration webhook subscription was [deleted with HTTP 204](./evidence/exports/temporary-webhook-cleanup.json) after verified evidence was saved. The coordinator also stopped its public tunnel; this prototype does not offer a persistent hosted receiver.
+- Future product work: a built-in checkout UI, login, service-enabled public hosting, refund ledger, multi-currency settlement and broader semantic/user evaluation. The completed buyer approval used PayPal's sandbox interface. Submission packaging is complete; no judging outcome is claimed.
 - Narrow financial model: one order, one purchase unit, one invoice, CAPTURE intent; USD/EUR/GBP only. Completed-capture amount is not net settlement, profit or money received in a bank account.
 - No automatic payment action or automatic refund exists. `capture_order` is a proposal requiring application-level validation, a fresh read and an explicit operator action. The low-level adapter is separate and must not be exposed as an unrestricted browser endpoint.
 
 ## Event fit and evidence plan
 
-The [official rules](https://paypalaihackathon.devpost.com/rules), checked on 2 October 2026 UTC, require central PayPal sandbox integration plus AI, a working runnable demo, public GitHub with an open-source license, English materials and a public or unlisted YouTube demonstration under three minutes. They define five equally weighted judging criteria. Current local package is **not a complete submission**.
+The [official rules](https://paypalaihackathon.devpost.com/rules), checked on 2 October 2026 UTC, require central PayPal sandbox integration plus AI, a working runnable demo, public GitHub with an open-source license, English materials and a public or unlisted YouTube demonstration under three minutes. They define five equally weighted judging criteria. Devpost has confirmed the project submission; that confirmation does not establish a judging outcome.
 
 | Criterion | Weight | Caseproof evidence to provide | Current state |
 |---|---:|---|---|
@@ -36,17 +39,17 @@ The [official rules](https://paypalaihackathon.devpost.com/rules), checked on 2 
 | Design | 20% | One understandable exception queue and evidence-to-action path | Local workbench implemented; desktop/mobile/tablet and keyboard smoke checks passed; no user usability study |
 | Potential impact | 20% | Merchant problem, reproducible duplicate handling, honest boundaries | Synthetic case and local replay of an authentic event work; user validation pending |
 | Innovation/idea | 20% | Explain why evidence-constrained payment resolution improves the decision | Proposed distinction; comparative review pending |
-| Presentation | 20% | Crisp English demo of working integration, accessible repository and exact version | MIT license added; Devpost draft saved at 2/5; repository publication, video and submission pending |
+| Presentation | 20% | Crisp English demo of working integration, accessible repository and exact version | MIT repository and offline demo public; unlisted 2:13 video verified; Devpost submission confirmed and receipt saved |
 
-Eligibility/entry audit: existing research indicates adult Colombian individual entry is compatible. The coordinator has completed event registration and started the project draft; final project fields and required artifacts remain unfinished. Deadline: 12 November 2026, 17:00 Colombia. MIT licensing is in place; repository publication and video remain pending. A fictitious sandbox capture is demonstrated, with no real-money proceeds or prize outcome claimed.
+Eligibility/entry audit: existing research indicates adult Colombian individual entry is compatible. Event registration and project submission are complete. Deadline: 12 November 2026, 17:00 Colombia. The MIT repository and offline demo are public. The [video](https://youtu.be/nZk1ntRACYs) is published as unlisted; separate browser playback reached 10.67 seconds of its 133.121-second duration. Fictitious sandbox captures are demonstrated, with no real-money proceeds or prize outcome claimed.
 
-Related application tracking: Qloo event registration and its API-key request are also confirmed. Qloo key delivery is pending by email and may take several business days; that separate application's progress does not establish any Caseproof integration.
+Related application tracking: Qloo event registration and its API-key request are also confirmed. The latest mailbox search found the Google Forms receipt and starter kit, but no API key. Key delivery remains pending; that separate application's progress does not establish any Caseproof integration.
 
-## Remaining integration and submission work
+## Future work and preserved evidence
 
 1. Retain the minimized authentic timeline, inspection/model output, verified webhook and labeled local replay alongside the original failed model runs. Keep private provider JSON and credentials out of publication.
 2. Broaden semantic evaluation beyond the six development fixtures. Retain the independent validator and the visible warning that model prose may contradict evidence.
-3. Record an authenticated demonstration alongside the explicitly synthetic scenarios. Publish the MIT-licensed repository, prepare the required English video and complete the Devpost submission fields. Recheck that UI, README, video and submission make the same claims before sending. The local replay must not be described as a second network delivery.
+3. Preserve the submitted [story](./submission/project-story.md), [confirmation](./submission/devpost-submitted-ax.txt) and [receipt](./submission/RECEIPT.md). Any later update should retain the distinction between a local replay and a second network delivery.
 
 ## Primary technical sources
 
